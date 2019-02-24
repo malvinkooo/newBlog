@@ -5,6 +5,8 @@ class Main extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('common/main');
+		$this->load->model('categories');
+		$data['categories'] = $this->categories->get_categories();
+		$this->load->view('common/main', $data);
 	}
 }
