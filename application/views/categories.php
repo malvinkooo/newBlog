@@ -6,6 +6,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="site-main-container">
     <div class="container">
+        <div class="load-more">
+            <a href="/categories/add" class="primary-btn">Добавить новую категорию</a>
+        </div>
         <div class="row categories-list">
             <?php foreach($categories as $itm): ?>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 mb-20">

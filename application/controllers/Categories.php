@@ -7,7 +7,11 @@ class Categories extends CI_Controller {
     {
         $this->load->model('categories_model');
         $data['categories'] = $this->categories_model->get_categories();
-        // $data['categories'] = "Hello";
         $this->load->view('categories', $data);
+    }
+
+    public function add()
+    {
+        $this->load->view('add_category');
     }
 }
