@@ -1689,7 +1689,7 @@ body {
   background: #fff;
 }
 
-.latest-post-area .latest-post-wrap .cat-title {
+.cat-title {
   font-size: 14px;
   font-weight: 600;
   background: #04091e;
@@ -3209,6 +3209,35 @@ div.thumbnail_container .overlay-bg {
   padding: 20px 0;
   background-color: #fff;
   margin: 20px 0;
+}
+
+@media (max-width: 575px) {
+  .categories-list-page .container {
+    padding: 0 15px !important;
+  }
+}
+
+/* =================================== */
+/*  Add Category Page Styles
+/* =================================== */
+.add-category-form {
+  padding: 20px 0;
+  background-color: #fff;
+  margin: 20px 0;
+}
+
+.add-category-form .primary-btn {
+  float: right;
+}
+
+@media (max-width: 575px) {
+  .add-category-page .container {
+    padding: 0 15px !important;
+  }
+  .add-category-form .primary-btn {
+    float: none;
+    width: 100%;
+  }
 }
 
 /* =================================== */

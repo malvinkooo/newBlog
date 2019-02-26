@@ -9,4 +9,9 @@ class Categories_model extends CI_Model {
         $query = $this->db->get('categories');
         return $query->result_array();
     }
+
+    public function add_category($data) {
+        $this->load->database();
+        $this->db->insert('categories', $data);
+    }
 }
