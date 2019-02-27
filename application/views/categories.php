@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </ul>
                         </div>
                         <div class="category-actions">
-                            <a href="#" class="lnr lnr-pencil icon"></a>
+                            <a href="/categories/edit_form/<?=$itm['id']?>" class="lnr lnr-pencil icon"></a>
                             <a href="/categories/remove_confirm/<?=$itm['id']?>" class="lnr lnr-trash icon"></a>
                         </div>
                     </div>
