@@ -25,4 +25,20 @@ class Categories extends CI_Controller {
         $this->load->helper('url');
         redirect('//blog.ua/categories/');
     }
+
+    public function remove_confirm($id)
+    {
+        $this->load->model('categories_model');
+        $data['category'] = $this->categories_model->get_category($id);
+        $this->load->view('category_remove_confirm', $data);
+    }
+
+    public function remove($id)
+    {
+        $this->load->model('categories_model');
+        $this->categories_model->remove_category($id);
+
+        $this->load->helper('url');
+        redirect('//blog.ua/categories/');
+    }
 }

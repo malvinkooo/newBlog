@@ -1479,6 +1479,25 @@ body {
   text-align: center;
 }
 
+.single-category .category-actions {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.single-category .category-actions .icon {
+  padding: 5px;
+  vertical-align: middle;
+  color: #000;
+}
+
+.single-category:hover .category-actions {
+  opacity: 1;
+}
+
 .single-category:hover .img-fluid {
   transform: scale(1.045);
 }
@@ -3232,6 +3251,29 @@ div.thumbnail_container .overlay-bg {
 
 @media (max-width: 575px) {
   .add-category-page .container {
+    padding: 0 15px !important;
+  }
+  .add-category-form .primary-btn {
+    float: none;
+    width: 100%;
+  }
+}
+
+/* =================================== */
+/*  Remove Category Page Styles
+/* =================================== */
+.remove-category-wrap {
+  padding: 20px 0;
+  background-color: #fff;
+  margin: 20px 0;
+}
+
+.add-category-form .primary-btn {
+  float: right;
+}
+
+@media (max-width: 575px) {
+  .remove-category-page .container {
     padding: 0 15px !important;
   }
   .add-category-form .primary-btn {
