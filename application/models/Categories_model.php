@@ -25,6 +25,14 @@ class Categories_model extends CI_Model {
         return $result->result_array()[0];
     }
 
+    public function edit_category($data)
+    {
+        $this->load->database();
+        $this->db->set('name', $data['name']);
+        $this->db->where('id', $data['id']);
+        $this->db->update('categories');
+    }
+
     public function remove_category($id)
     {
         $this->load->database();

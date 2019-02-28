@@ -1356,8 +1356,7 @@ body {
 .primary-btn {
   background: #f6214b;
   line-height: 42px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 1px 30px;
   border: none;
   color: #fff;
   display: inline-block;
@@ -1369,6 +1368,7 @@ body {
   transition: all 0.3s ease 0s;
   cursor: pointer;
   position: relative;
+  max-width: 100%;
 }
 
 .primary-btn:focus {
@@ -3239,21 +3239,21 @@ div.thumbnail_container .overlay-bg {
 /* =================================== */
 /*  Add Category Page Styles
 /* =================================== */
-.add-category-form {
+.modify-category-form {
   padding: 20px 0;
   background-color: #fff;
   margin: 20px 0;
 }
 
-.add-category-form .primary-btn {
+.modify-category-form .add-category-btn {
   float: right;
 }
 
 @media (max-width: 575px) {
-  .add-category-page .container {
+  .modify-category-page .container {
     padding: 0 15px !important;
   }
-  .add-category-form .primary-btn {
+  .modify-category-form .add-category-btn {
     float: none;
     width: 100%;
   }

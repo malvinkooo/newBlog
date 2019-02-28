@@ -48,4 +48,12 @@ class Categories extends CI_Controller {
         $data['category'] = $this->categories_model->get_category($id);
         $this->load->view('modify_category', $data);
     }
+
+    public function edit() {
+        $data = $_POST;
+        $this->load->model('categories_model');
+        $this->categories_model->edit_category($data);
+        $this->load->helper('url');
+        redirect('categories');
+    }
 }
