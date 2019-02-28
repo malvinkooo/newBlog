@@ -23,7 +23,7 @@ class Categories extends CI_Controller {
         $this->categories_model->add_category($data);
 
         $this->load->helper('url');
-        redirect('//blog.ua/categories/');
+        redirect('/categories/');
     }
 
     public function remove_confirm($id)
@@ -39,7 +39,7 @@ class Categories extends CI_Controller {
         $this->categories_model->remove_category($id);
 
         $this->load->helper('url');
-        redirect('//blog.ua/categories/');
+        redirect('/categories/');
     }
 
     public function edit_form($id)
