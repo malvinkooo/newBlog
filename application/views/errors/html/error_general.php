@@ -57,8 +57,8 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
+		<h1>Общая ошибка</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus repellat, quis temporibus aliquid animi. Labore amet tempore quo nam non natus qui a, nihil nemo minima veniam sequi, voluptas expedita.</p>
 	</div>
 </body>
 </html>

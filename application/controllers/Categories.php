@@ -1,29 +1,63 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require('Validator.php');
+require('Exceptions.php');
 
 class Categories extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+        $this->validator = new Validator();
+    }
+
     public function index()
     {
-        $this->load->model('categories_model');
-        $data['categories'] = $this->categories_model->get_categories();
-        $this->load->view('categories', $data);
+        try
+        {
+            $this->load->model('categories_model');
+            $data['categories'] = $this->categories_model->get_categories();
+            $this->load->view('categories', $data);
+        } catch(DBException $e)
+        {
+            $this->load->view('errors/html/error_db');
+        } catch(Exception $e)
+        {
+            $this->load->view('errors/html/error_general');
+        }
     }
 
     public function add_form()
     {
-        $this->load->model('categories_model');
-        $data['categories'] = $this->categories_model->get_categories();
-        $this->load->view('modify_category', $data);
+        try
+        {
+            $this->load->model('categories_model');
+            $data['categories'] = $this->categories_model->get_categories();
+            $this->load->view('modify_category', $data);
+        } catch(Exception $e)
+        {
+            $this->load->view('errors/html/error_general');
+        }
     }
 
     public function add() {
-        $data['name'] = $_POST['name'];
-        $this->load->model('categories_model');
-        $this->categories_model->add_category($data);
+        try {
+            $data['name'] = $_POST['name'];
+            $this->validator->is_category_name_valid($data['name']);
+            $this->load->model('categories_model');
+            $this->categories_model->add_category($data);
 
-        $this->load->helper('url');
-        redirect('/categories/');
+            $this->load->helper('url');
+            redirect('/categories/');
+        } catch (ValidateException $e) {
+            $this->load->view('errors/html/error_400');
+        } catch (DBException $e)
+        {
+            $this->load->view('errors/html/error_db');
+        } catch (exception $e)
+        {
+            $this->load->view('errors/html/error_general');
+        }
+
     }
 
     public function remove_confirm($id)

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Database Error</title>
+<title>404 Page Not Found</title>
 <style type="text/css">
 
 ::selection { background-color: #E13300; color: white; }
@@ -57,8 +57,8 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1>Ошибко базы данных</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ipsa illum eligendi ratione praesentium, rerum fuga reiciendis quidem sint, velit deleniti quae saepe aspernatur nihil dolores iure, beatae libero impedit!</p>
+		<h1>Ошибка 400</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente temporibus, itaque! Officia quis deleniti excepturi aut at possimus aperiam architecto, ex exercitationem sed voluptas ut officiis, ea dignissimos! Placeat, tempora.</p>
 	</div>
 </body>
 </html>
