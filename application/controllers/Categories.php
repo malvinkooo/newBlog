@@ -19,10 +19,10 @@ class Categories extends CI_Controller {
             $this->load->view('categories', $data);
         } catch(DBException $e)
         {
-            $this->load->view('errors/html/error_db');
+            show_error("Ошибка в базе данных.", 500, $heading = 'An Error Was Encountered');
         } catch(Exception $e)
         {
-            $this->load->view('errors/html/error_general');
+            show_error("Что-то пошло не так...", 500, $heading = 'An Error Was Encountered');
         }
     }
 
@@ -35,45 +35,70 @@ class Categories extends CI_Controller {
             $this->load->view('modify_category', $data);
         } catch(Exception $e)
         {
-            $this->load->view('errors/html/error_general');
+            show_error("Что-то пошло не так...", 500, $heading = 'An Error Was Encountered');
         }
     }
 
     public function add() {
         try {
-            $data['name'] = $_POST['name'];
+            $data['name'] = $this->input->post('name');
             $this->validator->is_category_name_valid($data['name']);
             $this->load->model('categories_model');
             $this->categories_model->add_category($data);
-
             $this->load->helper('url');
             redirect('/categories/');
         } catch (ValidateException $e) {
-            $this->load->view('errors/html/error_400');
+            show_error("Данные не валидны, проверьте их и отправте форму снова.", 400, $heading = 'An Error Was Encountered');
         } catch (DBException $e)
         {
-            $this->load->view('errors/html/error_db');
-        } catch (exception $e)
+            show_error("Ошибка в базе данных.", 500, $heading = 'An Error Was Encountered');
+        } catch (Exception $e)
         {
-            $this->load->view('errors/html/error_general');
+            show_error("Что-то пошло не так...", 500, $heading = 'An Error Was Encountered');
         }
-
     }
 
     public function remove_confirm($id)
     {
-        $this->load->model('categories_model');
-        $data['category'] = $this->categories_model->get_category($id);
-        $this->load->view('category_remove_confirm', $data);
+        try
+        {
+            $this->load->model('categories_model');
+            $data['category'] = $this->categories_model->get_category($id);
+            $this->load->view('category_remove_confirm', $data);
+        } catch (ValidateException $e) {
+            show_error("Данные не валидны, проверьте их и отправте форму снова.", 400, $heading = 'An Error Was Encountered');
+        } catch (NotFoundException $e)
+        {
+            show_error("Такой категории нет.", 500, $heading = 'An Error Was Encountered');
+        } catch (DBException $e)
+        {
+            show_error("Ошибка в базе данных.", 500, $heading = 'An Error Was Encountered');
+        } catch (Exception $e)
+        {
+            show_error("Что-то пошло не так...", 500, $heading = 'An Error Was Encountered');
+        }
     }
 
     public function remove($id)
     {
-        $this->load->model('categories_model');
-        $this->categories_model->remove_category($id);
-
-        $this->load->helper('url');
-        redirect('/categories/');
+        try
+        {
+            $this->load->model('categories_model');
+            $this->categories_model->remove_category($id);
+            $this->load->helper('url');
+            redirect('/categories/');
+        } catch (ValidateException $e) {
+            show_error("Данные не валидны, проверьте их и отправте форму снова.", 400, $heading = 'An Error Was Encountered');
+        } catch (NotFoundException $e)
+        {
+            show_error("Такой категории нет.", 500, $heading = 'An Error Was Encountered');
+        } catch (DBException $e)
+        {
+            show_error("Ошибка в базе данных.", 500, $heading = 'An Error Was Encountered');
+        } catch (Exception $e)
+        {
+            show_error("Что-то пошло не так...", 500, $heading = 'An Error Was Encountered');
+        }
     }
 
     public function edit_form($id)
@@ -84,10 +109,18 @@ class Categories extends CI_Controller {
     }
 
     public function edit() {
-        $data = $_POST;
-        $this->load->model('categories_model');
-        $this->categories_model->edit_category($data);
-        $this->load->helper('url');
-        redirect('categories');
+        try
+        {
+            $data = $this->input->post('name');
+            $this->load->model('categories_model');
+            $this->categories_model->edit_category($data);
+            $this->load->helper('url');
+            redirect('/categories/');
+        } catch (DBException $e)
+        {
+            show_error("Ошибка в базе данных.", 500, $heading = 'An Error Was Encountered');
+        } catch (Exception $e) {
+            show_error("Что-то пошло не так...", 500, $heading = 'An Error Was Encountered');
+        }
     }
 }

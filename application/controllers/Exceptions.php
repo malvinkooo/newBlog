@@ -16,3 +16,11 @@ class ValidateException extends Exception {
     }
 
 }
+
+class NotFoundException extends Exception {
+
+    function __construct($message, $code) {
+        parent::__construct($message, $code);
+    }
+
+}
