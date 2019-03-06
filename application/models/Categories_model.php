@@ -6,13 +6,9 @@ class Categories_model extends CI_Model {
     public function get_categories()
     {
         $this->load->database();
-        $query = $this->db->get('categories');
+        $query = $this->db->get('categories1');
         $db_error = $this->db->error();
-        if (!empty($db_error['code'])) {
-            throw new DBException('Ошибка базы данных! Код ошибки [' . $db_error['code'] . '] Ошибка: ' . $db_error['message'], 500);
-        } else {
-            return $query->result_array();
-        }
+        return $query->result_array();
     }
 
     public function add_category($data)

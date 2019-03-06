@@ -3118,6 +3118,7 @@ div.thumbnail_container .overlay-bg {
 }
 
 /*-------- End audio post Style -------------*/
+
 /* =================================== */
 /*  Contact Page Styles
 /* =================================== */
@@ -3283,8 +3284,36 @@ div.thumbnail_container .overlay-bg {
 }
 
 /* =================================== */
-/*  Category Page Styles
+/*  DB Error Page Styles
 /* =================================== */
+.db-error-wrap {
+  padding: 20px 0;
+  background-color: #fff;
+  margin: 20px 0;
+}
+
+.db-error-title {
+  text-align: center;
+}
+
+.db-error-text {
+  color: #000;
+  margin-top: 20px;
+  border: 1px solid red;
+  padding: 5px;
+  font-family: 'Arial', sans-serif;
+}
+
+.db-error-btn-wrap {
+  text-align: center;
+  margin: 40px 0;
+}
+
+@media (max-width: 575px) {
+  .db-error-page .container {
+    padding: 0 15px !important;
+  }
+}
 
 
 /* =================================== */

@@ -12,18 +12,10 @@ class Categories extends CI_Controller {
 
     public function index()
     {
-        try
-        {
-            $this->load->model('categories_model');
-            $data['categories'] = $this->categories_model->get_categories();
-            $this->load->view('categories', $data);
-        } catch(DBException $e)
-        {
-            show_error("Ошибка в базе данных.", 500, $heading = 'An Error Was Encountered');
-        } catch(Exception $e)
-        {
-            show_error("Что-то пошло не так...", 500, $heading = 'An Error Was Encountered');
-        }
+        $this->load->model('categories_model');
+        $data['categories'] = $this->categories_model->get_categories();
+        $this->load->view('categories', $data);
+        // show_error("Что-то пошло не так...", 500, $heading = 'An Error Was Encountered');
     }
 
     public function add_form()
