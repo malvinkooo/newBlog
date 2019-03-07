@@ -34,9 +34,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="container no-padding">
                 <div class="db-error-wrap row">
                     <div class="col-lg-12">
-                        <h2 class="db-error-title"><?php echo $heading; ?></h2>
-
+                        <h2 class="db-error-title">Произошла ошибка в базе данных, попробуйте снова через некоторое время.</h2>
                         <?php if(ENVIRONMENT !== 'production') { ?>
+                            <h3 class="db-error-title"><?php echo $heading; ?></h3>
                             <div class="db-error-text">
                             <?php echo $message; ?>
                             </div>

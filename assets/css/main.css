@@ -3294,6 +3294,7 @@ div.thumbnail_container .overlay-bg {
 
 .db-error-title {
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .db-error-text {
@@ -3304,6 +3305,10 @@ div.thumbnail_container .overlay-bg {
   font-family: 'Arial', sans-serif;
 }
 
+.db-error-text > p:last-child {
+  margin-bottom: 0;
+}
+
 .db-error-btn-wrap {
   text-align: center;
   margin: 40px 0;
@@ -3311,6 +3316,43 @@ div.thumbnail_container .overlay-bg {
 
 @media (max-width: 575px) {
   .db-error-page .container {
+    padding: 0 15px !important;
+  }
+}
+
+/* =================================== */
+/*  DB Error Page Styles
+/* =================================== */
+.notFound-error-wrap {
+  padding: 20px 0;
+  background-color: #fff;
+  margin: 20px 0;
+}
+
+.notFound-error-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.notFound-error-text {
+  color: #000;
+  margin-top: 20px;
+  border: 1px solid red;
+  padding: 5px;
+  font-family: 'Arial', sans-serif;
+}
+
+.notFound-error-text > p:last-child {
+  margin-bottom: 0;
+}
+
+.notFound-error-btn-wrap {
+  text-align: center;
+  margin: 40px 0;
+}
+
+@media (max-width: 575px) {
+  .notFound-error-page .container {
     padding: 0 15px !important;
   }
 }
