@@ -7,6 +7,7 @@ class Categories extends CI_Controller {
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('categories_model');
+        $this->load->helper(array('form', 'url'));
     }
 
     public function index()
@@ -22,7 +23,6 @@ class Categories extends CI_Controller {
     }
 
     public function add() {
-        $this->load->helper(array('form', 'url'));
         $this->form_validation->set_rules('name', 'Name', array('required', 'min_length[2]', 'max_length[255]'));
 
         if ($this->form_validation->run() == FALSE)
@@ -61,7 +61,6 @@ class Categories extends CI_Controller {
             exit();
         }
 
-        $this->load->helper('url');
         redirect('/categories/');
     }
 
@@ -80,7 +79,6 @@ class Categories extends CI_Controller {
     }
 
     public function edit() {
-        $this->load->helper(array('form', 'url'));
         $this->form_validation->set_rules('name', 'Name', array('required', 'min_length[2]', 'max_length[255]'));
 
         if ($this->form_validation->run() == FALSE)
