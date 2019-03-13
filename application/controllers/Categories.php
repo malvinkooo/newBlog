@@ -28,6 +28,7 @@ class Categories extends CI_Controller {
         if ($this->form_validation->run() == FALSE)
         {
             $data['categories'] = $this->categories_model->get_categories();
+            $data['name'] = $this->input->post('name');
             $this->load->view('modify_category', $data);
         }
         else

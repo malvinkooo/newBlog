@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     <div class="col-lg-12"><h1 class="mb-30"><?php echo isset($category) ? 'Изменить категорию' : 'Добавить новую категорию'; ?></h1></div>
 
-                    <div class="col-lg-12"><input type="text" class="form-control mb-15" placeholder="Название категории" name="name" value="<?php echo isset($category) ? $category['name'] : ''; ?>"></div>
+                    <div class="col-lg-12"><input type="text" class="form-control mb-15" placeholder="Название категории" name="name" value="<?php echo isset($category) ? $category['name'] : $name; ?>"></div>
                     <div class="col-lg-12"><input type="file" class="form-control mb-15" name="img"></div>
 
                     <?php if(isset($category)) { ?>
