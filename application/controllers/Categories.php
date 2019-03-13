@@ -1,12 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require('Validator.php');
 
 class Categories extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->validator = new Validator();
         $this->load->library('form_validation');
         $this->load->model('categories_model');
     }
