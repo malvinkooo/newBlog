@@ -3250,6 +3250,13 @@ div.thumbnail_container .overlay-bg {
   float: right;
 }
 
+.modify-category-error {
+  color: red !important;
+  font-weight: 800;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
 @media (max-width: 575px) {
   .modify-category-page .container {
     padding: 0 15px !important;
