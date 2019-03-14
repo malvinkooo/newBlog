@@ -85,7 +85,7 @@ class Categories extends CI_Controller {
         if ($this->form_validation->run() == FALSE)
         {
             $data['categories'] = $this->categories_model->get_categories();
-            $data['category'] = $this->categories_model->get_category( $this->input->post('id') );
+            $data['category'] =  $this->input->post();
             $this->load->view('modify_category', $data);
         }
         else

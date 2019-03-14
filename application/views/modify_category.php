@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-lg-6 offset-lg-3">
 
                 <?php echo form_open(isset($category) ? '/categories/edit' : '/categories/add'); ?>
-                    <input type="hidden" name="id" value="<?php echo isset($category) ? $category['id'] : ''; ?>">
+                    <input type="hidden" name="id" value="<?php echo isset($category) ? $category['id'] : ""; ?>">
 
                     <div class="col-lg-12"><h1 class="mb-30"><?php echo isset($category) ? 'Изменить категорию' : 'Добавить новую категорию'; ?></h1></div>
 
