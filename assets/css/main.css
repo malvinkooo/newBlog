@@ -1718,6 +1718,31 @@ body {
 
 .latest-post-area .latest-post-wrap .single-latest-post {
   margin-top: 20px;
+  padding-top: 25px;
+  position: relative;
+}
+
+.single-latest-post .single-post-actions {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.single-latest-post:hover .single-post-actions {
+  opacity: 1;
+}
+
+.single-latest-post .single-post-actions .icon {
+  padding: 5px;
+  vertical-align: middle;
+  color: #000;
+}
+
+.single-latest-post .single-post-actions .icon:hover {
+  color: #f6214b;
 }
 
 .latest-post-area .latest-post-wrap .single-latest-post .feature-img {

@@ -25,15 +25,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="latest-post-wrap">
                     <h4 class="cat-title">Последние статьи</h4>
 
+                    <?php
+                    echo "<pre>";
+                    var_dump($articles);
+                    echo "</pre>";
+                    ?>
+
                     <?php foreach ($articles as $article): ?>
                     <div class="single-latest-post row align-items-center">
+
+                        <div class="single-post-actions">
+                            <a href="/categories/edit_form/2" class="lnr lnr-pencil icon"></a>
+                            <a href="/categories/remove_confirm/2" class="lnr lnr-trash icon"></a>
+                        </div>
+
+
                         <div class="col-lg-5 post-left">
                             <div class="feature-img relative">
                                 <div class="overlay overlay-bg"></div>
                                 <img class="img-fluid" src="/assets/img/l1.jpg" alt="">
                             </div>
                             <ul class="tags">
-                                <li><a href="#">Lifestyle</a></li>
+                                <li><a href="#"><?=$article['name']?></a></li>
                             </ul>
                         </div>
                         <div class="col-lg-7 post-right">
@@ -41,8 +54,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <h4><?=$article['title']?></h4>
                             </a>
                             <ul class="meta">
-                                <li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
-                                <li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+                                <li><a href="#"><span class="lnr lnr-user"></span><?=$article['author']?></a></li>
+                                <li><a href="#"><span class="lnr lnr-calendar-full"></span><?=$article['date']?></a></li>
                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
                             </ul>
                             <p class="excert"><?= substr_replace(substr($article['text'], 0, 100), '...', 100)?></p>
