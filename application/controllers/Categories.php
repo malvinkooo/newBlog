@@ -16,26 +16,27 @@ class Categories extends CI_Controller {
         $this->load->view('categories', $data);
     }
 
-    public function add_form()
-    {
-        $data['categories'] = $this->categories_model->get_categories();
-        $this->load->view('modify_category', $data);
-    }
-
     public function add() {
-        $this->form_validation->set_rules('name', 'Name', array('required', 'min_length[2]', 'max_length[255]'));
+        $data['isCategoryAdd'] = TRUE;
 
-        if ($this->form_validation->run() == FALSE)
-        {
+        if($this->input->server('REQUEST_METHOD') == 'GET') {
             $data['categories'] = $this->categories_model->get_categories();
-            $data['name'] = $this->input->post('name');
+            $data['category']['name'] = '';
+            $data['category']['id'] = '';
             $this->load->view('modify_category', $data);
-        }
-        else
-        {
-            $data = $this->input->post();
-            $this->categories_model->add_category($data);
-            redirect('/categories/');
+        } else if($this->input->server('REQUEST_METHOD') == 'POST') {
+            $this->form_validation->set_rules('name', 'Name', array('required', 'min_length[2]', 'max_length[255]'));
+
+            if ($this->form_validation->run() == FALSE) {
+                $data['categories'] = $this->categories_model->get_categories();
+                $data['category']['name'] = $this->input->post('name');
+                $data['category']['id'] = '';
+                $this->load->view('modify_category', $data);
+            } else {
+                $data = $this->input->post();
+                $this->categories_model->add_category($data);
+                redirect('/categories/');
+            }
         }
     }
 
@@ -56,8 +57,7 @@ class Categories extends CI_Controller {
     {
         $query_result = $this->categories_model->remove_category($id);
 
-        if(!$query_result)
-        {
+        if(!$query_result) {
             show_404('application/views/errors/html/error_404.php');
             exit();
         }
@@ -65,41 +65,37 @@ class Categories extends CI_Controller {
         redirect('/categories/');
     }
 
-    public function edit_form($id)
-    {
-        $data['categories'] = $this->categories_model->get_categories();
-        $data['category'] = $this->categories_model->get_category($id);
-
-        if(!$data['category']) 
-        {
-            show_404('application/views/errors/html/error_404.php');
-            exit();
-        }
-
-        $this->load->view('modify_category', $data);
-    }
-
-    public function edit() {
-        $this->form_validation->set_rules('name', 'Name', array('required', 'min_length[2]', 'max_length[255]'));
-
-        if ($this->form_validation->run() == FALSE)
-        {
+    public function edit($id) {
+        if($this->input->server('REQUEST_METHOD') == 'GET') {
             $data['categories'] = $this->categories_model->get_categories();
-            $data['category'] =  $this->input->post();
-            $this->load->view('modify_category', $data);
-        }
-        else
-        {
-            $data = $this->input->post();
-            $query_result = $this->categories_model->edit_category($data);
+            $data['category'] = $this->categories_model->get_category($id);
 
-            if(!$query_result)
-            {
+            if(!$data['category']) {
                 show_404('application/views/errors/html/error_404.php');
                 exit();
             }
-            redirect('/categories/');
 
+            $this->load->view('modify_category', $data);
+        } else if($this->input->server('REQUEST_METHOD') == 'POST') {
+            $this->form_validation->set_rules('name', 'Name', array('required', 'min_length[2]', 'max_length[255]'));
+
+            if ($this->form_validation->run() == FALSE) {
+                $data['categories'] = $this->categories_model->get_categories();
+                $data['category']['name'] =  $this->input->post('name');
+                $data['category']['id'] =  $id;
+                $this->load->view('modify_category', $data);
+            } else {
+                $data['name'] = $this->input->post('name');
+                $data['id'] = $id;
+                $query_result = $this->categories_model->edit_category($data);
+
+                if(!$query_result) {
+                    show_404('application/views/errors/html/error_404.php');
+                    exit();
+                }
+                redirect('/categories/');
+
+            }
         }
     }
 }
