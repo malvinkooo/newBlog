@@ -13,7 +13,7 @@
                                 <ul>
 
                                     <?php foreach($categories as $itm): ?>
-                                        <li><a href="/category?id=<?=$itm['id'];?>"><?=$itm['name'];?></a></li>
+                                        <li><a href="/category/<?=$itm['id'];?>"><?=$itm['name'];?></a></li>
                                     <?php endforeach ?>
 
                                 </ul>

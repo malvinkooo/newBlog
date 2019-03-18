@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="site-main-container categories-list-page">
     <div class="container no-padding">
         <div class="load-more">
-            <a href="/categories/add_form" class="primary-btn">Добавить новую категорию</a>
+            <a href="/categories/add/" class="primary-btn">Добавить новую категорию</a>
         </div>
         <div class="row categories-list">
             <div class="col-lg-12">
@@ -22,11 +22,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="category-details">
                             <ul class="tags">
-                                <li><a href="/category?id=<?=$itm['id']?>"><?=$itm['name']?></a></li>
+                                <li><a href="/category/<?=$itm['id']?>"><?=$itm['name']?></a></li>
                             </ul>
                         </div>
                         <div class="category-actions">
-                            <a href="/categories/edit_form/<?=$itm['id']?>" class="lnr lnr-pencil icon"></a>
+                            <a href="/categories/edit/<?=$itm['id']?>" class="lnr lnr-pencil icon"></a>
                             <a href="/categories/remove_confirm/<?=$itm['id']?>" class="lnr lnr-trash icon"></a>
                         </div>
                     </div>

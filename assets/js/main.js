@@ -187,16 +187,20 @@ $(document).ready(function() {
     //------- Sticky Main Menu js --------//
 
 
-    window.onscroll = function() {stickFunction()};
+    if(document.getElementById("main-menu")) {
+        window.onscroll = function() {
+            stickFunction();
+        };
 
-    var navbar = document.getElementById("main-menu");
-    var sticky = navbar.offsetTop;
-    function stickFunction() {
-      if (window.pageYOffset > sticky) {
-        navbar.classList.add("sticky")
-      } else {
-        navbar.classList.remove("sticky");
-      }
+        var navbar = document.getElementById("main-menu");
+        var sticky = navbar.offsetTop;
+        function stickFunction() {
+            if (window.pageYOffset > sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
     }
 
 
