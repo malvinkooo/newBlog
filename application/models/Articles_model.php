@@ -6,15 +6,27 @@ class Articles_model extends CI_Model {
     public function get_articles_by_category($id)
     {
         $this->load->database();
-        $this->db->select('*');
-        $this->db->from('articles');
-        $this->db->where('category_id', $id);
-        $this->db->limit(5);
-		$this->db->join('categories', 'categories.id = articles.category_id');
-        $this->db->order_by('date', 'DESC');
-		$query = $this->db->get();
 
-        return $query->result_array();
+        $this->db->where('id', $id);
+        $category = $this->db->get('categories');
+        if(!$category) {
+            return FALSE;
+        }
+
+        $this->db->where('category_id', $id);
+        if($this->input->get('limit') !== null) {
+            $this->db->limit($this->input->get('limit'));
+        }
+        $this->db->order_by('date', 'DESC');
+        $query_result = $this->db->get('articles');
+
+        return $query_result->result_array();
+    }
+
+    public function add_article($data) {
+        $data['date'] = date("y-m-d");
+        $this->load->database();
+        $this->db->insert('articles', $data);
     }
 }
 

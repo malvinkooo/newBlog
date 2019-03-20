@@ -17,6 +17,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </section>
 
+<div class="container no-padding">
+    <div class="load-more">
+        <a href="/articles/add/?category_id=<?=$category['id']?>" class="primary-btn">Добавить новую статью</a>
+    </div>
+</div>
+
 <section class="latest-post-area pb-120">
     <div class="container no-padding">
         <div class="row">
@@ -24,12 +30,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <!-- Start latest-post Area -->
                 <div class="latest-post-wrap">
                     <h4 class="cat-title">Последние статьи</h4>
-
-                    <?php
-                    echo "<pre>";
-                    var_dump($articles);
-                    echo "</pre>";
-                    ?>
 
                     <?php foreach ($articles as $article): ?>
                     <div class="single-latest-post row align-items-center">
@@ -45,9 +45,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="overlay overlay-bg"></div>
                                 <img class="img-fluid" src="/assets/img/l1.jpg" alt="">
                             </div>
-                            <ul class="tags">
-                                <li><a href="#"><?=$article['name']?></a></li>
-                            </ul>
                         </div>
                         <div class="col-lg-7 post-right">
                             <a href="/article/<?=$article['id']?>">
@@ -58,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <li><a href="#"><span class="lnr lnr-calendar-full"></span><?=$article['date']?></a></li>
                                 <li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
                             </ul>
-                            <p class="excert"><?= substr_replace(substr($article['text'], 0, 100), '...', 100)?></p>
+                            <div class="excert"><?=mb_strlen($article['text']) > 100 ? substr_replace(substr($article['text'], 0, 100), '...', 100) : $article['text'];?></div>
                         </div>
                     </div>
                     <?php endforeach ?>

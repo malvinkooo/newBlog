@@ -1798,6 +1798,14 @@ body {
 
 .latest-post-area .latest-post-wrap .single-latest-post .excert {
   margin-bottom: 0px;
+  font-weight: 400;
+  color: #777777;
+}
+
+.latest-post-area .latest-post-wrap .single-latest-post .excert * {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 }
 
 .latest-post-area .latest-post-wrap .single-latest-post .post-right h4 {
@@ -3263,7 +3271,7 @@ div.thumbnail_container .overlay-bg {
 }
 
 /* =================================== */
-/*  Add Category Page Styles
+/*  Modify Category Page Styles
 /* =================================== */
 .modify-category-form {
   padding: 20px 0;
@@ -3287,6 +3295,43 @@ div.thumbnail_container .overlay-bg {
     padding: 0 15px !important;
   }
   .modify-category-form .add-category-btn {
+    float: none;
+    width: 100%;
+  }
+}
+
+/* =================================== */
+/*  Modify Article Page Styles
+/* =================================== */
+.modify-article-form {
+  padding: 20px 0;
+  background-color: #fff;
+  margin: 20px 0;
+}
+
+.modify-article-form textarea {
+  resize: none;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+}
+
+.modify-article-form .add-article-btn {
+  float: right;
+}
+
+.modify-article-error {
+  color: red !important;
+  font-weight: 800;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 575px) {
+  .modify-article-page .container {
+    padding: 0 15px !important;
+  }
+  .modify-article-form .add-article-btn {
     float: none;
     width: 100%;
   }

@@ -44,7 +44,7 @@ class Categories extends CI_Controller {
     {
         $data['category'] = $this->categories_model->get_category($id);
 
-        if( empty($data['category']) )
+        if(!$data['category'])
         {
             show_404('application/views/errors/html/error_404.php');
             exit();

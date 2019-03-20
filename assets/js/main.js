@@ -408,6 +408,11 @@ $(document).ready(function() {
         $('#mc_embed_signup').find('form').ajaxChimp();
     });
 
+    //------- Tinymce js --------//
+    tinymce.init({
+        selector: '#add-article-textarea'
+    });
+
 });
 
 

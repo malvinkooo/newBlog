@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Categories_model extends CI_Model {
 
-
     public function get_categories()
     {
         $this->load->database();
@@ -14,7 +13,7 @@ class Categories_model extends CI_Model {
     public function add_category($data)
     {
         $this->load->database();
-        $query_result = $this->db->insert('categories', $data);
+        $this->db->insert('categories', $data);
     }
 
     public function get_category($id)

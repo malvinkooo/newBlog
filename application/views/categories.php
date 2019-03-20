@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="category-details">
                             <ul class="tags">
-                                <li><a href="/category/<?=$itm['id']?>"><?=$itm['name']?></a></li>
+                                <li><a href="/category/<?=$itm['id']?>?limit=1"><?=$itm['name']?></a></li>
                             </ul>
                         </div>
                         <div class="category-actions">
