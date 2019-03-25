@@ -13,7 +13,7 @@ class Category extends CI_Controller {
         $this->load->model('articles_model');
         $data['category'] = $this->categories_model->get_category($id);
         $data['categories'] = $this->categories_model->get_categories();
-        $data['articles'] = $this->articles_model->get_articles_by_category($id);
+        $data['articles'] = $this->articles_model->get_articles_by_category($id, $this->input->get('limit'));
 
         if(!$data['articles']) {
             show_404('application/views/errors/html/error_404.php');

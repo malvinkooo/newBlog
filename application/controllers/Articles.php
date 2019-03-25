@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once('application/libraries/Validation_rules.php');
+Use Validation\ValidationRules;
+
 class Articles extends CI_Controller {
 
     function __construct() {
@@ -18,32 +21,35 @@ class Articles extends CI_Controller {
 
     public function add()
     {
-        $data['isArticleAdd'] = TRUE;
+        $category_id = $this->input->get('category_id');
 
         if($this->input->server('REQUEST_METHOD') == 'GET') {
-            $data['categories'] = $this->categories_model->get_categories();
-            $data['title'] = 'Title';
-            $data['text'] = 'Test';
-            $data['id'] = '';
-            $data['category_id'] = $this->input->get('category_id');
+            $data = [
+                'isArticleAdd' => TRUE,
+                'categories' => $this->categories_model->get_categories(),
+                'title' => 'Title',
+                'text' => 'Test',
+                'id' => '',
+                'category_id' => $category_id
+            ];
             $this->load->view('modify_article', $data);
         } else if($this->input->server('REQUEST_METHOD') == 'POST') {
-            $this->form_validation->set_rules('title', 'Title', array('required', 'min_length[2]', 'max_length[255]'));
-            $this->form_validation->set_rules('text', 'Article content', array('required', 'min_length[2]', 'max_length[16777215]'));
-
+            $this->form_validation->set_rules(ValidationRules::add_article());
             if($this->form_validation->run() == FALSE) {
-                $data['categories'] = $this->categories_model->get_categories();
-                $data['title'] = $this->input->post('title');
-                $data['text'] = $this->input->post('text');
-                $data['id'] = '';
-                $data['category_id'] = $this->input->get('category_id');
+                $data = [
+                    'categories' => $this->categories_model->get_categories(),
+                    'title' => $this->input->post('title'),
+                    'text' => $this->input->post('text'),
+                    'id' => '',
+                    'category_id' => $category_id,
+                    'isArticleAdd' => TRUE,
+                ];
                 $this->load->view('modify_article', $data);
             } else {
                 $data = $this->input->post();
-                $data['category_id'] = $this->input->get('category_id');
+                $data['category_id'] = $category_id;
                 $this->articles_model->add_article($data);
 
-                $category_id = $this->input->get('category_id');
                 redirect('/category/'.$category_id.'/?limit=5');
             }
         }

@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Articles_model extends CI_Model {
 
-    public function get_articles_by_category($id)
+    public function get_articles_by_category($id, $limit)
     {
         $this->load->database();
 
@@ -14,8 +14,8 @@ class Articles_model extends CI_Model {
         }
 
         $this->db->where('category_id', $id);
-        if($this->input->get('limit') !== null) {
-            $this->db->limit($this->input->get('limit'));
+        if(isset($limit)) {
+            $this->db->limit($limit);
         }
         $this->db->order_by('date', 'DESC');
         $query_result = $this->db->get('articles');
