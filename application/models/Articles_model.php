@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Articles_model extends CI_Model {
 
-    public function get_articles_by_category($id, $limit)
-    {
+    public function get_articles_by_category($id, $limit) {
         $this->load->database();
 
         $this->db->where('id', $id);
@@ -27,6 +26,25 @@ class Articles_model extends CI_Model {
         $data['date'] = date("y-m-d");
         $this->load->database();
         $this->db->insert('articles', $data);
+    }
+
+    public function edit_article($data) {
+        $this->load->database();
+        
+        $this->db->where('id', $data['id']);
+        $this->db->set('title', $data['title']);
+        $this->db->set('text', $data['text']);
+        $this->db->update('articles');
+
+        return $this->db->affected_rows();
+    }
+
+    public function get_article($id) {
+        $this->load->database();
+        $this->db->where('id', $id);
+        $query_result = $this->db->get('articles');
+
+        return $query_result->result_array()[0] ?? FALSE;
     }
 }
 

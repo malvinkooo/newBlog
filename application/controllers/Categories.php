@@ -67,8 +67,10 @@ class Categories extends CI_Controller {
 
     public function edit($id) {
         if($this->input->server('REQUEST_METHOD') == 'GET') {
-            $data['categories'] = $this->categories_model->get_categories();
-            $data['category'] = $this->categories_model->get_category($id);
+            $data = array(
+                'categories' => $this->categories_model->get_categories(),
+                'category' => $this->categories_model->get_category($id)
+            );
 
             if(!$data['category']) {
                 show_404('application/views/errors/html/error_404.php');

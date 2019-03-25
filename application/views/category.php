@@ -35,8 +35,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="single-latest-post row align-items-center">
 
                         <div class="single-post-actions">
-                            <a href="/categories/edit_form/2" class="lnr lnr-pencil icon"></a>
-                            <a href="/categories/remove_confirm/2" class="lnr lnr-trash icon"></a>
+                            <a href="/articles/edit/<?=$article['id'];?>" class="lnr lnr-pencil icon"></a>
+                            <a href="/articles/remove_confirm/2" class="lnr lnr-trash icon"></a>
                         </div>
 
 
@@ -47,7 +47,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                         <div class="col-lg-7 post-right">
-                            <a href="/article/<?=$article['id']?>">
+                            <a href="/article/<?=$article['id'];?>">
                                 <h4><?=$article['title']?></h4>
                             </a>
                             <ul class="meta">

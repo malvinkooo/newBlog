@@ -1718,7 +1718,7 @@ body {
 
 .latest-post-area .latest-post-wrap .single-latest-post {
   margin-top: 20px;
-  padding-top: 25px;
+  padding-top: 30px;
   position: relative;
 }
 
@@ -3314,6 +3314,10 @@ div.thumbnail_container .overlay-bg {
   box-sizing: border-box;
   display: block;
   width: 100%;
+}
+
+.modify-article-form .tox.tox-tinymce {
+  height: 450px !important;
 }
 
 .modify-article-form .add-article-btn {
