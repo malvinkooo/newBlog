@@ -5,17 +5,27 @@ namespace Validation;
 
 class ValidationRules {
     public static function add_article() {
-        return array(
-            array(
+        return [
+            [
                 'field' => 'title',
                 'label' => 'Title',
                 'rules' => 'required|min_length[2]|max_length[255]'
-            ),
-            array(
+            ],
+            [
                 'field' => 'text',
                 'label' => 'Article content',
                 'rules' => 'required|min_length[2]|max_length[16777215]'
-            )
-        );
+            ]
+        ];
+    }
+
+    public static function modify_category() {
+        return [
+            [
+                'field' => 'name',
+                'label' => 'Name',
+                'rules' => 'required|min_length[2]|max_length[255]'
+            ]
+        ];
     }
 }

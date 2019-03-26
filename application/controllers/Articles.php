@@ -51,7 +51,8 @@ class Articles extends CI_Controller {
                 $data = [
                     'title' => $this->input->post('title'),
                     'text' => $this->input->post('text'),
-                    'category_id' => $category_id
+                    'category_id' => $category_id,
+                    'date' => date("y-m-d")
                 ];
                 $this->articles_model->add_article($data);
 
@@ -61,6 +62,11 @@ class Articles extends CI_Controller {
     }
 
     public function edit($id) {
+        if(!$this->articles_model->is_article_exist($id)) {
+            show_404('application/views/errors/html/error_404.php');
+            exit();
+        }
+
         if($this->input->server('REQUEST_METHOD') == 'GET') {
             $data = [
                 'isArticleAdd' => FALSE,
@@ -68,19 +74,8 @@ class Articles extends CI_Controller {
                 'categories' => $this->categories_model->get_categories(),
             ];
 
-            if(!$data['article']) {
-                show_404('application/views/errors/html/error_404.php');
-                exit();
-            }
-
             $this->load->view('modify_article', $data);
         } else if($this->input->server('REQUEST_METHOD') == 'POST') {
-            $article = $this->articles_model->get_article($id);
-            if(!$article) {
-                show_404('application/views/errors/html/error_404.php');
-                exit();
-            }
-
             $this->form_validation->set_rules(ValidationRules::add_article());
             
             $category_id = $this->input->get('category_id');
@@ -104,11 +99,7 @@ class Articles extends CI_Controller {
                     'id' => $id,
                     'category_id' => $category_id
                 ];
-                $query_result = $this->articles_model->edit_article($data);
-                if(!$query_result) {
-                    show_404('application/views/errors/html/error_404.php');
-                    exit();
-                }
+                $this->articles_model->edit_article($data);
 
                 redirect('/category/'.$category_id.'/?limit=5');
             }
