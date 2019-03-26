@@ -105,4 +105,28 @@ class Articles extends CI_Controller {
             }
         }
     }
+
+    public function remove_confirm($id) {
+        if (!$this->articles_model->is_article_exist($id)) {
+            show_404('application/views/errors/html/error_404.php');
+            exit();
+        }
+
+        $data = [
+            'categories' => $this->categories_model->get_categories(),
+            'article' => $this->articles_model->get_article($id)
+        ];
+        $this->load->view('article_remove_confirm', $data);
+    }
+
+    public function remove($id) {
+        $query_result = $this->articles_model->remove_article($id);
+
+        if(!$query_result) {
+            show_404('application/views/errors/html/error_404.php');
+            exit();
+        }
+        $category_id = $this->input->get('category_id');
+        redirect("/category/".$category_id);
+    }
 }

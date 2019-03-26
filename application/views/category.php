@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         <div class="single-post-actions">
                             <a href="/articles/edit/<?=$article['id'];?>" class="lnr lnr-pencil icon"></a>
-                            <a href="/articles/remove_confirm/2" class="lnr lnr-trash icon"></a>
+                            <a href="/articles/remove_confirm/<?=$article['id']?>" class="lnr lnr-trash icon"></a>
                         </div>
 
 

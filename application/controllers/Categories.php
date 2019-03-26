@@ -62,6 +62,7 @@ class Categories extends CI_Controller {
         }
 
         $data = [
+            'categories' => $this->categories_model->get_categories(),
             'category' => $this->categories_model->get_category($id)
         ];
         $this->load->view('category_remove_confirm', $data);

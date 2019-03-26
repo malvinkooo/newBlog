@@ -3342,6 +3342,21 @@ div.thumbnail_container .overlay-bg {
 }
 
 /* =================================== */
+/*  Remove Article Page Styles
+/* =================================== */
+.remove-article-wrap {
+  padding: 20px 0;
+  background-color: #fff;
+  margin: 20px 0;
+}
+
+@media (max-width: 575px) {
+  .remove-article-page .container {
+    padding: 0 15px !important;
+  }
+}
+
+/* =================================== */
 /*  Remove Category Page Styles
 /* =================================== */
 .remove-category-wrap {
